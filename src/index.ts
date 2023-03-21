@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as dotenv from "dotenv";
-import yargs from "yargs";
-import { hideBin } from "yargs/helpers";
+import readline from "readline";
 
 dotenv.config();
 
@@ -12,12 +11,16 @@ if (!apiKey) {
   process.exit(1);
 }
 
+let conversationHistory: string[] = [];
+
 async function chatGPT(prompt: string): Promise<string> {
   try {
+    const fullPrompt = `${conversationHistory.join("\n")}\nUser: ${prompt}\nAI: `;
+
     const response = await axios.post(
       "https://api.openai.com/v1/engines/text-davinci-002/completions",
       {
-        prompt: `Q: ${prompt}\nA: `,
+        prompt: fullPrompt,
         max_tokens: 100,
         n: 1,
         stop: null,
@@ -31,32 +34,30 @@ async function chatGPT(prompt: string): Promise<string> {
       }
     );
 
-    const completion = response.data.choices[0].text.trim();
-    return completion;
+    const reply = response.data.choices[0].text.trim();
+    conversationHistory.push(`User: ${prompt}`, `AI: ${reply}`);
+
+    return reply;
   } catch (error) {
     console.error("Error:", error);
     return "An error occurred.";
   }
 }
 
-interface Arguments {
-  prompt: string;
-  _: (string | number)[];
-  $0: string;
+async function main() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  rl.setPrompt("Input your question: ");
+  rl.prompt();
+
+  rl.on("line", async (line) => {
+    const reply = await chatGPT(line);
+    console.log(`Answer: ${reply}`);
+    rl.prompt();
+  });
 }
 
-const argv = (yargs(hideBin(process.argv))
-  .option("prompt", {
-    alias: "p",
-    type: "string",
-    demandOption: true,
-    description: "プロンプトを指定してください",
-  })
-  .argv as unknown) as Arguments;
-
-(async () => {
-  const prompt = argv.prompt;
-  const answer = await chatGPT(prompt);
-  console.log(`Prompt: ${prompt}`);
-  console.log(`Answer: ${answer}`);
-})();
+main();
