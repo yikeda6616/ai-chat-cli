@@ -12,27 +12,33 @@ if (!apiKey) {
   process.exit(1);
 }
 
-async function chatGPT(prompt: string) {
-  const response = await axios.post(
-    "https://api.openai.com/v1/engines/text-davinci-002/completions",
-    {
-      prompt: prompt,
-      max_tokens: 100,
-      n: 1,
-      stop: null,
-      temperature: 0.7,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
+async function chatGPT(prompt: string): Promise<string> {
+  try {
+    const response = await axios.post(
+      "https://api.openai.com/v1/engines/text-davinci-002/completions",
+      {
+        prompt: `Q: ${prompt}\nA: `,
+        max_tokens: 100,
+        n: 1,
+        stop: null,
+        temperature: 0.7,
       },
-    }
-  );
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+      }
+    );
 
-  const completion = response.data.choices[0].text.trim();
-  return completion;
+    const completion = response.data.choices[0].text.trim();
+    return completion;
+  } catch (error) {
+    console.error("Error:", error);
+    return "An error occurred.";
+  }
 }
+
 interface Arguments {
   prompt: string;
   _: (string | number)[];
