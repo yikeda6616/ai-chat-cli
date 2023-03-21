@@ -1,0 +1,8 @@
+{
+  "name": "chat-gpt-cli",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/yikeda6616/chat-gpt-cli",
+  "author": "Yasushi Ikeda <yikeda6616@gmail.com>",
+  "license": "MIT"
+}
