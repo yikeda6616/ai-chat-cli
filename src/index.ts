@@ -1,5 +1,7 @@
 import axios from "axios";
 import * as dotenv from "dotenv";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 dotenv.config();
 
@@ -31,9 +33,23 @@ async function chatGPT(prompt: string) {
   const completion = response.data.choices[0].text.trim();
   return completion;
 }
+interface Arguments {
+  prompt: string;
+  _: (string | number)[];
+  $0: string;
+}
+
+const argv = (yargs(hideBin(process.argv))
+  .option("prompt", {
+    alias: "p",
+    type: "string",
+    demandOption: true,
+    description: "プロンプトを指定してください",
+  })
+  .argv as unknown) as Arguments;
 
 (async () => {
-  const prompt = "What is the capital of France?";
+  const prompt = argv.prompt;
   const answer = await chatGPT(prompt);
   console.log(`Prompt: ${prompt}`);
   console.log(`Answer: ${answer}`);
