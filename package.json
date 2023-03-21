@@ -5,6 +5,9 @@
   "repository": "https://github.com/yikeda6616/chat-gpt-cli",
   "author": "Yasushi Ikeda <yikeda6616@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
   "devDependencies": {
     "@types/node": "^18.15.5",
     "ts-node": "^10.9.1",
