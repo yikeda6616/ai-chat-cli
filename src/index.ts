@@ -14,7 +14,7 @@ if (!apiKey) {
 
 async function chatGPT(prompt: string) {
   const response = await axios.post(
-    "https://api.openai.com/v1/engines/davinci-codex/completions",
+    "https://api.openai.com/v1/engines/text-davinci-002/completions",
     {
       prompt: prompt,
       max_tokens: 100,
