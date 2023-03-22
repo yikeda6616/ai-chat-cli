@@ -28,4 +28,4 @@ yarn start
 
 ## 補足
 
-text-davinci-002 は OpenAI GPT-3 エンジンの一部であり、現在Webで利用できるChatGPT とは異なります。ChatGPT は GPT-3.5-turbo をベースにした OpenAI の独自の会話型AIモデルです。
+text-davinci-003 は OpenAI GPT-3 エンジンの一部であり、現在Webで利用できるChatGPT とは異なります。ChatGPT は GPT-3.5-turbo をベースにした OpenAI の独自の会話型AIモデルです。

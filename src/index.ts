@@ -18,7 +18,7 @@ async function chatGPT(prompt: string): Promise<string> {
     const fullPrompt = `${conversationHistory.join("\n")}\nUser: ${prompt}\nAI: `;
 
     const response = await axios.post(
-      "https://api.openai.com/v1/engines/text-davinci-002/completions",
+      "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
         prompt: fullPrompt,
         max_tokens: 100,
