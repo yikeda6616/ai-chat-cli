@@ -21,7 +21,7 @@ async function chatGPT(prompt: string): Promise<string> {
       "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
         prompt: fullPrompt,
-        max_tokens: 100,
+        max_tokens: 1024,
         n: 1,
         stop: null,
         temperature: 0.7,
