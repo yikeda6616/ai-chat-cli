@@ -1,31 +1,34 @@
 # ai-chat-cli
 
-Node.js (TypeScript) で OpenAI GPT-3 とCLI上で対話形式でチャットを行うツールです。
+This is a tool for conducting interactive chats in CLI with OpenAI GPT-4 / GPT-3.5-turbo using Node.js (TypeScript).
 
-## 導入
+## Installation
 
-1. プロジェクトをクローン後パッケージをインストールします。
+1. Clone the project and install the packages:
+
 ```
 yarn
 ```
 
-2. APIキーなどの環境変数は .env ファイルから読み込みます。
+2. Load the environment variables such as the API key from the .env file:
 
 .env
+
 ```
 OPENAI_API_KEY=your_api_key
+OPENAI_ORGANIZATION=your_org_id
 ```
 
-## 実行
+## Run
 
-以下のコマンドを実行することで、対話を開始できます。
+You can start an interactive chat by running the following command:
 
 ```
 yarn start
 ```
 
-コマンドラインで質問を入力し、回答を受け取りながら、対話を続けることができます。会話を終了するには、 `Ctrl + C` を押してください。
+You can continue the conversation by entering questions on the command line and receiving answers. To end the conversation, input "exit" or press `Ctrl + C`.
 
-## 補足
+## Disclaimer
 
-text-davinci-003 は OpenAI GPT-3 エンジンの一部であり、現在Webで利用できるChatGPT とは異なります。ChatGPT は GPT-3.5-turbo をベースにした OpenAI の独自の会話型AIモデルです。
+Each request will use the token associated with your API KEY and account. Please use this tool at your own risk and discretion, as we cannot be responsible for any consequences resulting from the use of this tool.
