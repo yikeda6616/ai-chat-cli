@@ -1,5 +1,5 @@
 import { model } from "./config";
-import apiManager from "./api";
+import apiManager from "./ApiManager";
 
 class Chat {
   private conversationHistory: string[] = [];
