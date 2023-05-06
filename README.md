@@ -4,6 +4,14 @@ This is a tool for conducting interactive chats in CLI with OpenAI GPT-4 / GPT-3
 
 <img width="1242" alt="Screenshot 2023-05-06 at 14 27 46" src="https://user-images.githubusercontent.com/25294178/236602136-5c47cb16-c3e3-4a51-99af-e2d1a71a1c36.png">
 
+## Prerequisites
+
+Before using this tool, you will need to have the following:
+
+- Node.js (version 18 or higher)
+- Yarn (version 1.x) or npm (version 7.x)
+
+You will also need an **OpenAI API key**, which you can obtain from the OpenAI website. Please refer to the [OpenAI documentation](https://platform.openai.com/account/api-keys) for instructions on how to obtain an API key.
 
 ## Installation
 
