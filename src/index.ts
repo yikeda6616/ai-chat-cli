@@ -1,22 +1,21 @@
-import readline from "readline";
 import Chat from "./chat";
+import InputManager from "./InputManager";
 
 async function main() {
   const chat = new Chat();
+  const inputManager = new InputManager();
 
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  rl.setPrompt("Input your question: ");
-  rl.prompt();
-
-  rl.on("line", async (line) => {
-    const reply = await chat.getChatResponse(line);
+  // Accept user input in an infinite loop
+  while (true) {
+    const question = await inputManager.getUserInput("Input your question: ");
+    if (question.toLowerCase() === "exit") {
+      break;
+    }
+    const reply = await chat.getChatResponse(question);
     console.log(`Answer: ${reply}`);
-    rl.prompt();
-  });
+  }
+
+  inputManager.close();
 }
 
 main();
