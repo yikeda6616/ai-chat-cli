@@ -2,14 +2,22 @@ import { Configuration, OpenAIApi } from "openai";
 import { apiKey, orgId } from "./config";
 
 class ApiManager {
+  private static instance: ApiManager;
   private openai: OpenAIApi;
 
-  constructor() {
+  private constructor() {
     const configuration = new Configuration({
       organization: orgId,
       apiKey: apiKey,
     });
     this.openai = new OpenAIApi(configuration);
+  }
+
+  public static getInstance(): ApiManager {
+    if (!ApiManager.instance) {
+      ApiManager.instance = new ApiManager();
+    }
+    return ApiManager.instance;
   }
 
   public async generateResponse(content: string, model: string) {
@@ -25,5 +33,5 @@ class ApiManager {
   }
 }
 
-const apiManager = new ApiManager();
+const apiManager = ApiManager.getInstance();
 export default apiManager;
