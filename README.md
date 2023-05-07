@@ -42,7 +42,7 @@ export const model: "gpt-4" | "gpt-3.5-turbo" = "gpt-4";
 
 Please note that different models may have different performance and pricing. Make sure to check OpenAI's documentation and pricing information before switching models.
 
-When you change the model, ensure that the necessary API keys and organization ID are set in the `.env` file as mentioned in the [API Configuration](#api-configuration) section.
+When you change the model, ensure that the necessary API keys and organization ID are set in the `.env` file as mentioned in the [API Configuration](#installation-and-api-configuration) section.
 
 
 ## Run
