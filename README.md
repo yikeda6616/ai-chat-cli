@@ -1,6 +1,6 @@
 # ai-chat-cli
 
-This is a tool for conducting interactive chats in CLI with OpenAI GPT-4 / GPT-3.5-turbo using Node.js (TypeScript).
+This is an interactive chat tool for conducting consecutive conversation on CLI, powered by GPT-4 / GPT-3.5-turbo.
 
 <img width="1242" alt="Screenshot 2023-05-06 at 14 27 46" src="https://user-images.githubusercontent.com/25294178/236602136-5c47cb16-c3e3-4a51-99af-e2d1a71a1c36.png">
 
