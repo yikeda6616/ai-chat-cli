@@ -13,7 +13,7 @@ Before using this tool, you will need to have the following:
 
 You will also need an **OpenAI API key**, which you can obtain from the OpenAI website. Please refer to the [OpenAI documentation](https://platform.openai.com/account/api-keys) for instructions on how to obtain an API key.
 
-## Installation
+## Installation and API Configuration
 
 1. Clone the project and install the packages:
 
@@ -29,6 +29,21 @@ yarn
 OPENAI_API_KEY=your_api_key
 OPENAI_ORGANIZATION=your_org_id
 ```
+
+## Model Configuration
+
+You can configure the OpenAI model used in this application by modifying the `config.ts` file. Currently, the supported models are "gpt-4" and "gpt-3.5-turbo".
+
+To change the model, open the `config.ts` file and update the `model` variable with the desired model name:
+
+```typescript
+export const model: "gpt-4" | "gpt-3.5-turbo" = "gpt-4";
+```
+
+Please note that different models may have different performance and pricing. Make sure to check OpenAI's documentation and pricing information before switching models.
+
+When you change the model, ensure that the necessary API keys and organization ID are set in the `.env` file as mentioned in the [API Configuration](#api-configuration) section.
+
 
 ## Run
 
