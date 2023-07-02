@@ -11,7 +11,7 @@ async function main() {
     if (question.toLowerCase() === "exit") {
       break;
     }
-    const reply = await chat.getChatResponse(question);
+    const reply = await chat.generateReply(question);
     console.log(`Answer: ${reply}`);
   }
 

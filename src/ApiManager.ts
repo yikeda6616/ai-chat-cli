@@ -6,6 +6,10 @@ class ApiManager {
   private openai: OpenAIApi;
 
   private constructor() {
+    if (!apiKey || !orgId) {
+      throw new Error("API key and/or Organization ID is missing in the configuration");
+    }
+
     const configuration = new Configuration({
       organization: orgId,
       apiKey: apiKey,
@@ -20,7 +24,11 @@ class ApiManager {
     return ApiManager.instance;
   }
 
-  public async generateResponse(content: string, model: string) {
+  public async getApiResponse(content: string, model: string) {
+    if (!content || !model) {
+      throw new Error("Content and/or model is missing");
+    }
+
     try {
       const response = await this.openai.createChatCompletion({
         model: model,
@@ -29,6 +37,7 @@ class ApiManager {
       return response;
     } catch (error) {
       console.error("Error:", error);
+      throw error;
     }
   }
 }
